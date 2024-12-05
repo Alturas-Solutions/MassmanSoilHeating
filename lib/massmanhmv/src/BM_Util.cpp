@@ -48,10 +48,10 @@ FILE *fh;
 double xnthroot (double f, double to ) 
 {
 double g; 
-char cr[50]; 
+//char cr[50]; 
 
  g = nthroot (abs(f),to); 
- sprintf (cr,"%f",g);
+ /*sprintf(cr, "%f", g);
 
  if ( !strncmp (cr, "1.#",3 ) ) {
    sprintf (gcr_JumpMess, "xnthroot (%f, %f) %s ", f, to, cr); 
@@ -60,7 +60,7 @@ char cr[50];
  if ( !strncmp (cr, "-1.#",4 ) ) {
    sprintf (gcr_JumpMess, "xnthroot (%f, %f) %s ", f, to, cr); 
    Mylongjmp();  } 
-
+*/
  return g; 
 }
 
@@ -72,10 +72,10 @@ char cr[50];
 double xsqrt (double f ) 
 {
 double g; 
-char cr[50]; 
+//char cr[50]; 
 
  g = sqrt (abs(f)); 
- sprintf (cr,"%f",g);
+ /*sprintf(cr, "%f", g);
 
  if ( !strncmp (cr, "1.#",3 ) ) {
    sprintf (gcr_JumpMess, "xsqrt (%f) %s ", f, cr); 
@@ -84,7 +84,7 @@ char cr[50];
  if ( !strncmp (cr, "-1.#",4 ) ) {
    sprintf (gcr_JumpMess, "xsqrt (%f) %s ", f, cr); 
    Mylongjmp();  } 
- 
+ */
 return g; 
 }
 
@@ -94,10 +94,10 @@ return g;
 double xexp (double f)
 {
 double g; 
-char cr[5000]; 
+//char cr[5000]; 
 
  g = exp (f); 
- sprintf (cr,"%f",g);
+/* sprintf(cr, "%f", g);
 
  if ( g == HUGE_VAL ) { 
    sprintf (gcr_JumpMess, "xexp (%f) %s ", f, cr); 
@@ -110,7 +110,7 @@ char cr[5000];
  if ( !strncmp (cr, "-1.#",4 ) ) {
    sprintf (gcr_JumpMess, "xexp (%f) %s ", f, cr); 
    Mylongjmp();  }
-
+*/
  return g; 
 }
 
@@ -120,10 +120,10 @@ char cr[5000];
 double xpow (double base, double to)
 {
 double f; 
-char cr[50];
+//char cr[50];
 
   f = pow (base,to);
-  sprintf (cr,"%f",f); 
+  /*sprintf(cr, "%f", f);
  
   if ( !strncmp (cr, "1.#", 3 ) ) {
    sprintf (gcr_JumpMess, "xpow (%f, %f) %s ", base, to , cr); 
@@ -132,7 +132,7 @@ char cr[50];
   if ( !strncmp (cr, "-1.#", 4 ) ) {
    sprintf (gcr_JumpMess, "xpow (%f, %f) %s ", base,to, cr); 
    Mylongjmp();  }
-
+*/
   return f; 
 }
 
@@ -143,7 +143,7 @@ char cr[50];
 double  xlog (double f) 
 {
 double a,b,c;
-char cr[100]; 
+//char cr[100]; 
 
   if ( f >= 0 ) { 
     c = log (f); 
@@ -157,7 +157,7 @@ char cr[100];
   c = b + e_pi;
 
 Ret: 
-  sprintf (cr,"%f",c); 
+/*  sprintf(cr, "%f", c);
 
   if ( !strncmp (cr, "1.#", 3 ) ) {
    sprintf (gcr_JumpMess, "xlog (%f) %s ", f, cr); 
@@ -166,7 +166,7 @@ Ret:
   if ( !strncmp (cr, "-1.#", 4 ) ) {
    sprintf (gcr_JumpMess, "xlog (%f) %s ", f, cr); 
    Mylongjmp();  }
-
+*/
   return c; 
 }
 

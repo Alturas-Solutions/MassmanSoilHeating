@@ -29,8 +29,8 @@ end
 *************************************************************/
 double Vmult5 (double a1, double a2, double a3, double a4, double a5, double a6, double temR)
 {
-int i; 
-double f, g; 
+//int i; 
+//double f, g; 
 double a[10];
 double B;
   
@@ -43,15 +43,16 @@ double B;
  a[5] = a5;
  a[6] = a6;
 
+ return a[1] + (a[2] + (a[3] + (a[4] + (a[5] + a[6] * B)*B)*B)*B)*B;
 // works 
-  for ( i = 6; i >= 1; i-- ) {
+  /*for (i = 6; i >= 1; i--) {
      f = a[i-1] +  a[i] * B ;
      a[i-1] = f; 
   }
 
   g = a[1];
 
-  return g; 
+  return g; */
 
 // also works  -
 //  for ( i = 5; i >= 1; i-- ) {

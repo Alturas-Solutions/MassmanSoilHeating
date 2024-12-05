@@ -66,7 +66,7 @@ void BMI_Init (d_BMI *b);
 
 
 /* CHANGE - 9-6-2018 Bill email to change to 3.0 */
-#define e_delt  3.0    /* orig  1.2 time increments */
+#define e_delt  1.0    /* orig  1.2 time increments */
 
 /* Maximum number of time (nsteps) steps we'll allow */
 /* The Massman simulation array sizes are set to this */

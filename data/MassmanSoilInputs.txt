@@ -10,12 +10,12 @@
 
 FireType: Pile Burn
 AmbientTemp_C: 21.0
-FireDuration_Hrs: 40.0
-MaxWattTime_Hrs: 9.5
-Intensity_kW/m2: 18.0
+FireDuration_Hrs: 80.0
+MaxWattTime_Hrs: 4.0
+Intensity_kW/m2: 16.0
 SoilMoisture_m3/m3: 0.10
 SoilBulkDensity_Mg/m3: 1.250
 SoilParticleDensity_Mg/m3: 2.650
-SimTime_Hrs: 50.0
-OutMoistureCSV: D:\Data\MassmanSoilHeat\BM_Moisture.csv
-OutTemperatureCSV: D:\Data\MassmanSoilHeat\BM_Temperatue.csv
+SimTime_Hrs: 100.0
+OutMoistureCSV: D:\Data\Downloads\massmanhmv_cli\Data\BM_Moisture.csv
+OutTemperatureCSV: D:\Data\Downloads\massmanhmv_cli\Data\BM_Temperatue.csv
