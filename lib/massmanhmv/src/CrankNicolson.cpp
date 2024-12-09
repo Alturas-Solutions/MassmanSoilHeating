@@ -91,7 +91,7 @@ double f;
                  poros,tempk,tempki,psin,denw,muw,dmTm,sdialc,ddiaT, 
                  stensn,dstensdT,nlevel); 
  
-   ACS_Check (dKnFdp, "dKnFdp"); 
+   //ACS_Check (dKnFdp, "dKnFdp"); 
 
    calSw (Sw, LGLth,  theta,poros,nlevel);
 

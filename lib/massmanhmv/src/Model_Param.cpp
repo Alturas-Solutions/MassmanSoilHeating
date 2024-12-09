@@ -74,6 +74,8 @@ double f;
 
 // % Crank-Nicolson
    delt   = e_delt;
+   if(bmi->f_TimeStep > 0)
+    delt = bmi->f_TimeStep;
 // % delt    = 0.6;
    ndpthT = 0;
 

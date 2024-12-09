@@ -34,6 +34,7 @@ int  DaysInMth (int Mth);
 #define e_ICF_SIMTIME				"SimTime_Hrs"
 #define e_ICF_OUT_MOISTURE_CSV		"OutMoistureCSV"
 #define e_ICF_OUT_TEMPERATURE_CSV	"OutTemperatureCSV"
+#define e_ICF_TIMESTEP				"TimeStep_Secs"
 
 /*.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.*/
 /*                         Error Message Struct                             */
@@ -70,6 +71,7 @@ public:
 	float f_SimTimeHrs;
 	char cr_OutMoistureCSV[eC_PthFN];
 	char cr_OutTemperatureCSV[eC_PthFN];
+	float f_TimeStep;
 
 /* When reading input txt fil, most curnt line with found switch & arg index  */
    char cr_Line[eC_InpLin+1];  /* entire line                                */

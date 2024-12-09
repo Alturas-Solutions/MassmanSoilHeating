@@ -67,6 +67,7 @@ void  _GetRunTim(double d_delt, double jstep, char cr[])
 	j++;
 }
 
+extern double delt;
 /****************************************************************
 * Name:  FOFEM_HMV_Model
 * Desc:  This is a modified version of HMV_Model() (massman function)
@@ -129,18 +130,18 @@ int FOFEM_HMV_Model(d_BMI* bmi, char cr_Mode[])
 		}
 
 		if (bmi->d_SimTime <= _MinHrs(2))   // If simulation time < 2 hours //
-			n = (int)e_delt * 20;                    //  Graph every 1 minute //
+			n = (int)delt * 20;                    //  Graph every 1 minute //
 		else  if (bmi->d_SimTime <= _MinHrs(12))
-			n = (int)e_delt * 100;                    // Graph every 5 minutes //
+			n = (int)delt * 100;                    // Graph every 5 minutes //
 		else
-			n = (int)e_delt * 200;                    // Graph every 10 minutes; //
+			n = (int)delt * 200;                    // Graph every 10 minutes; //
 
 		iN++;
 		if (iN < n)                                // Is it time to graph //
 			continue;                                  // Nope //
 		iN = 0;
 
-		_GetRunTim(e_delt, jstep, cr);  // Get Simulation current run time //
+		_GetRunTim(delt, jstep, cr);  // Get Simulation current run time //
 		//Str = _CharToStr(cr);          //  display on GUI //
 		//this->_txMess->Text = Str;
 		printf("RunTime: %s\n", cr);
@@ -188,6 +189,7 @@ int main( int argc, char *argv[])
 	bmi.f_SoiBulDen = icf.f_SoilBulkDensityMg_m3;
 	bmi.f_SoiParDen = icf.f_SoilParticleDensityMg_m3;
 	bmi.d_SimTime = icf.f_SimTimeHrs * 60.0;
+	bmi.f_TimeStep = icf.f_TimeStep;
 	HTA_Init();
 	i = FOFEM_HMV_Model(&bmi, "Boundry");
 
@@ -216,6 +218,7 @@ int main( int argc, char *argv[])
 			}
 		Done:
 			fclose(mOut);
+			printf("Moisture output written to %s\n", icf.cr_OutMoistureCSV);
 		}
 	}
 	if (strlen(icf.cr_OutTemperatureCSV) > 0)
@@ -239,6 +242,7 @@ int main( int argc, char *argv[])
 			}
 		DoneHeat:
 			fclose(mOut);
+			printf("Temperature output written to %s\n", icf.cr_OutTemperatureCSV);
 		}
 	}
 	return i;

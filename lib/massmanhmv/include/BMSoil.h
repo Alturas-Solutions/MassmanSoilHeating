@@ -30,7 +30,7 @@ typedef struct {
 
     float  f_BurnTime;   /* Burn time Minutes */ 
     float  f_MaxWatTim;  /* Time (minutes) that max watts is applied in heat curve */
-
+    float f_TimeStep;   // simulation time step
     char   cr_TemMoi[20];           /* "Temp" or "Moist" - graph temperature or moisture - radio buttons */ 
     char cr_ErrMes[3000]; 
  
