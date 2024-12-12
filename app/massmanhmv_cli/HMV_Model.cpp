@@ -22,6 +22,7 @@
 #include "HTAA.h" 
 #include "icf_def.h"
 #include <string>
+#include <chrono>
 
 extern double tempki[]; 
 extern double nmin; 
@@ -190,11 +191,13 @@ int main( int argc, char *argv[])
 	bmi.f_SoiParDen = icf.f_SoilParticleDensityMg_m3;
 	bmi.d_SimTime = icf.f_SimTimeHrs * 60.0;
 	bmi.f_TimeStep = icf.f_TimeStep;
+	auto timeStart = std::chrono::high_resolution_clock::now();
 	HTA_Init();
 	i = FOFEM_HMV_Model(&bmi, "Boundry");
 
 	i = FOFEM_HMV_Model(&bmi, "");
 
+	auto timeEnd = std::chrono::high_resolution_clock::now();
 	//now do any outputs
 	float f_Heat, f_Moist, f_psin, f_Time;
 	if (strlen(icf.cr_OutMoistureCSV) > 0)
@@ -212,7 +215,7 @@ int main( int argc, char *argv[])
 						goto Done;
 					if (L == 1)
 						fprintf(mOut, "%5.2f", f_Time);
-					fprintf(mOut, ",%4.2f", f_Moist);
+					fprintf(mOut, ",%5.4f", f_Moist);
 				}
 				fprintf(mOut, "\n");
 			}
@@ -243,6 +246,32 @@ int main( int argc, char *argv[])
 		DoneHeat:
 			fclose(mOut);
 			printf("Temperature output written to %s\n", icf.cr_OutTemperatureCSV);
+		}
+		if (strlen(icf.cr_OutTimings) > 0)
+		{
+			FILE* out = fopen(icf.cr_OutTimings, "wt");
+			if (out)
+			{
+				std::chrono::duration<double> runTime = timeEnd - timeStart;
+				double secs = runTime.count();
+				fprintf(out, "#HMV_Model Total Run Time: %.2lf seconds\n", secs);
+
+				//now echo inputs file
+				fprintf(out, "\n\n#Contents of Inputs Command File:\n\n");
+				char inBuf[512];
+				FILE* in = fopen(argv[1], "rt");
+				while (fgets(inBuf, 511, in) != NULL)
+				{
+					fprintf(out, inBuf);
+				}
+				fclose(in);
+				fclose(out);
+			}
+			else
+			{
+				printf("Unable to open %s as output\n", icf.cr_OutTimings);
+			}
+
 		}
 	}
 	return i;

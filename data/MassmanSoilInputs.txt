@@ -19,6 +19,7 @@ SoilParticleDensity_Mg/m3: 2.650
 SimTime_Hrs: 100.0
 OutMoistureCSV: HMV_Moisture.csv
 OutTemperatureCSV: HMV_Temperatue.csv
+OutTimingsFile: HMV_Timings.txt
 
-#new optional timestep parameter (seconds), only used if greater than zero, may cause problems if too large
+#optional timestep parameter (seconds), only used if greater than zero, may cause problems if too large
 TimeStep_Secs: 2.0

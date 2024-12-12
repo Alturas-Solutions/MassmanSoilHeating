@@ -86,6 +86,7 @@ void  ICF::Init()
     f_TimeStep = ef_ICFInit;
     strcpy(cr_OutMoistureCSV, "");
     strcpy(cr_OutTemperatureCSV, "");
+    strcpy(cr_OutTimings, "");
 }
 
 // trim from left
@@ -151,6 +152,7 @@ int ICF::InputMassmanHMV(char cr_PthFN[])
     iRet = Set_SinNumArg(e_ICF_TIMESTEP, &f_TimeStep);
    // if (iRet != 1)
       //  return CloseRet(e_EMS_SIMTIME);
+    Set_FilNam(e_ICF_OUT_TIMINGS, cr_OutTimings);
     Set_FilNam(e_ICF_OUT_MOISTURE_CSV, cr_OutMoistureCSV);
     Set_FilNam(e_ICF_OUT_TEMPERATURE_CSV, cr_OutTemperatureCSV);
     if (strlen(cr_OutMoistureCSV) <= 0 && strlen(cr_OutTemperatureCSV) <= 0)
