@@ -247,32 +247,33 @@ int main( int argc, char *argv[])
 			fclose(mOut);
 			printf("Temperature output written to %s\n", icf.cr_OutTemperatureCSV);
 		}
-		if (strlen(icf.cr_OutTimings) > 0)
+	}
+	if (strlen(icf.cr_OutTimings) > 0)
+	{
+		FILE* out = fopen(icf.cr_OutTimings, "wt");
+		if (out)
 		{
-			FILE* out = fopen(icf.cr_OutTimings, "wt");
-			if (out)
-			{
-				std::chrono::duration<double> runTime = timeEnd - timeStart;
-				double secs = runTime.count();
-				fprintf(out, "#HMV_Model Total Run Time: %.2lf seconds\n", secs);
+			std::chrono::duration<double> runTime = timeEnd - timeStart;
+			double secs = runTime.count();
+			fprintf(out, "#HMV_Model Total Run Time: %.2lf seconds\n", secs);
 
-				//now echo inputs file
-				fprintf(out, "\n\n#Contents of Inputs Command File:\n\n");
-				char inBuf[512];
-				FILE* in = fopen(argv[1], "rt");
-				while (fgets(inBuf, 511, in) != NULL)
-				{
-					fprintf(out, inBuf);
-				}
-				fclose(in);
-				fclose(out);
-			}
-			else
+			//now echo inputs file
+			fprintf(out, "\n\n#Contents of Inputs Command File:\n\n");
+			char inBuf[512];
+			FILE* in = fopen(argv[1], "rt");
+			while (fgets(inBuf, 511, in) != NULL)
 			{
-				printf("Unable to open %s as output\n", icf.cr_OutTimings);
+				fprintf(out, inBuf);
 			}
-
+			fclose(in);
+			fclose(out);
+			printf("Timings file written to %s\n", icf.cr_OutTimings);
 		}
+		else
+		{
+			printf("Unable to open %s as output\n", icf.cr_OutTimings);
+		}
+
 	}
 	return i;
 
