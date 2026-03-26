@@ -9,7 +9,6 @@
 %                      
 %--------------------------------------------------------------------------
 %-------------------------------------------------------------------------*/
-//#include <windows.h> 
 #include <stdlib.h> 
 #include <stdio.h>
 #include <string.h>
@@ -18,7 +17,6 @@
 #include <setjmp.h> 
 
 #include "BMSoil.h"
-#include "SCN_Arrays.h" 
 #include "HTAA.h" 
 #include "icf_def.h"
 #include <string>

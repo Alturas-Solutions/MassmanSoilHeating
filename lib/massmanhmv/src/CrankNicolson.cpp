@@ -561,8 +561,8 @@ extern double forIR[];
 
   
 /*.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-*/
-int i_Lays, i_Inc, i_Min, i_Sec; 
-float dep,inc,f_Seconds, f_Minutes, f_Rem, f_Min; 
+int i_Lays, i_Inc; 
+float dep,inc,f_Seconds, f_Minutes; 
 
 /* Determine where the 1,2,3... centimeter values will be found in the */
 /*  temp, mosist... array */ 
@@ -590,8 +590,10 @@ float dep,inc,f_Seconds, f_Minutes, f_Rem, f_Min;
         strcpy ( cr_ErrMes, "CrankNicolson() - Array overflow"); 
         return 0; }
       j = j + i_Inc;  /* Get to next layer, layers are 1 cm thick */
-      if ( j > nlevel ) {  
-         strcpy ( cr_ErrMes, "Logic Error Saving Temp/Moist CrankNicolson()"); 
+      if ( j > nlevel ) 
+	  {  
+         //strcpy ( cr_ErrMes, "Logic Error Saving Temp/Moist CrankNicolson()"); 
+		  sprintf(cr_ErrMes, "Error Saving Temp/Moist CrankNicolson(), j = %d, nlevel = %.2lf", j, nlevel);
          return 0; }
      }
 Ret:

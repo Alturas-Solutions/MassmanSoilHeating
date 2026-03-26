@@ -68,7 +68,7 @@ void BoundarydBFD (d_BMI *bmi)
 int i,js,nn; 
 double d;
 
-  for ( i = 0; i <= eC_nsteps; i++ ) {
+for (i = 0; i < eC_nsteps; i++) {
     expp[i]  = 0; 
     expt[i]= 0; 
     bcQ[i]= 0; 

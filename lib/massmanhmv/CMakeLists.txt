@@ -8,10 +8,13 @@ IF(MSVC)
 ENDIF(MSVC)
 
 set(HEADER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set(HEADERS 
+set(TOP_LEVEL_HEADERS 
 	${HEADER_DIR}/BMSoil.h
-	${HEADER_DIR}/Crank.h
 	${HEADER_DIR}/HTAA.h
+	)
+set(HEADERS 
+	${TOP_LEVEL_HEADERS}
+	${HEADER_DIR}/Crank.h
 	${HEADER_DIR}/Matrix.h
 	${HEADER_DIR}/SCN_Arrays.h
 	)
@@ -112,4 +115,6 @@ add_library(${PROJECT_NAME}  STATIC
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include  )
 
+set(include_dest "include")
+install(FILES  ${TOP_LEVEL_HEADERS} DESTINATION "${include_dest}")
 install(TARGETS ${PROJECT_NAME} DESTINATION "${lib_dest}")

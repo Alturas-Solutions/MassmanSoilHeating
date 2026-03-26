@@ -89,10 +89,10 @@ void BMI_Init (d_BMI *b);
 /*----------------------------------------------------*/
 /* Depth Stuff */ 
 /* CHANGE - 9-6-2018 Bill email to change to .6 and .002 */
-#define e_Depth  0.60  // orig -> 0.20   // Model_Param.m
+const float  e_Depth = 0.60f;  // orig -> 0.20   // Model_Param.m
 /* Soil Depth is divided by this amount to get the */
 /*  the number of layers/levels */
-#define e_delz 0.002   // orig --> 0.001  // Model_Param.m
+const float   e_delz = 0.002f;   // orig --> 0.001  // Model_Param.m
 
 
 /*----------------------------------------------------*/

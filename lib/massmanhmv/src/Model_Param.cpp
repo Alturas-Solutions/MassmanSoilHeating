@@ -7,7 +7,7 @@
 #include <math.h> 
 #include "BMSoil.h"
 
-double nlevel; 
+double nlevel = ceil(e_Depth / e_delz + 1);
 double delt; 
 double nsteps; 
 double nl; 
@@ -67,7 +67,7 @@ double f;
 
   delz    = e_delz;
   depth   =  e_Depth;
-  nlevel  = ceil(depth/delz + 1);
+  //nlevel  = ceil(depth/delz + 1);
 
    linspace(z, 0,depth,nlevel);
 
